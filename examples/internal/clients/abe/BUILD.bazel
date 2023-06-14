@@ -1,9 +1,7 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library")
 
-package(default_visibility = ["//visibility:public"])
-
 go_library(
-    name = "go_default_library",
+    name = "abe",
     srcs = [
         "api_a_bit_of_everything_service.go",
         "api_camel_case_service_name.go",
@@ -30,11 +28,12 @@ go_library(
         "response.go",
     ],
     importpath = "github.com/grpc-ecosystem/grpc-gateway/examples/internal/clients/abe",
+    visibility = ["//examples:__subpackages__"],
     deps = [
-        "//examples/internal/proto/examplepb:go_default_library",
-        "//examples/internal/proto/pathenum:go_default_library",
-        "//runtime:go_default_library",
-        "@com_github_antihax_optional//:go_default_library",
-        "@org_golang_x_oauth2//:go_default_library",
+        "//examples/internal/proto/examplepb",
+        "//examples/internal/proto/pathenum",
+        "//runtime",
+        "@com_github_antihax_optional//:optional",
+        "@org_golang_x_oauth2//:oauth2",
     ],
 )

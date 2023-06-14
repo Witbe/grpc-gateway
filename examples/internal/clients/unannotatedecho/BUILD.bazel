@@ -1,9 +1,7 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library")
 
-package(default_visibility = ["//visibility:public"])
-
 go_library(
-    name = "go_default_library",
+    name = "unannotatedecho",
     srcs = [
         "api_unannotated_echo_service.go",
         "client.go",
@@ -14,8 +12,9 @@ go_library(
         "response.go",
     ],
     importpath = "github.com/grpc-ecosystem/grpc-gateway/examples/internal/clients/unannotatedecho",
+    visibility = ["//examples:__subpackages__"],
     deps = [
-        "@com_github_antihax_optional//:go_default_library",
-        "@org_golang_x_oauth2//:go_default_library",
+        "@com_github_antihax_optional//:optional",
+        "@org_golang_x_oauth2//:oauth2",
     ],
 )
